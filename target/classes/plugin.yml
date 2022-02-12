@@ -1,0 +1,16 @@
+name: EventSystem
+version: 'DEV-0.0.1'
+main: sk.adr3ez.eventsystem.Main
+api-version: 1.17
+softdepend: [ PlaceholderAPI ]
+authors: [ Adr3ez_ ]
+description: Event system plugin.
+commands:
+  event:
+    description: Main command for everything
+    aliases:
+      - es
+  eventeditor:
+    description: Edit everything you need
+    aliases:
+      - ee

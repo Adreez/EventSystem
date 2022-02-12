@@ -1,0 +1,60 @@
+#----------------------------------------------#
+#                                              #
+#          EventSystem | By: Adr3ez_           #
+#       Contact: (Discord) Adr3ez_#8374        #
+#     Contact: (E-mail) d1ggysvk@gmail.com     #
+#                                              #
+#                                              #
+#         If you found bugs/glitches.          #
+#     Feel free to contact plugin creator!     #
+#                                              #
+#----------------------------------------------#
+#
+# For materials as Item please use this: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html
+#
+
+Events:
+  #Event name or event ID:
+  test:
+    #How many minutes after start
+    CountdownStartSeconds: 30
+    # DisplayName and lore are used in /event broadcast and also in later updates they will be used for GUI navigation.
+    EventStats:
+      creator: "Adr3ez_"
+      createdate: 02/12/2021 21:43:57
+      timesplayed: "9999"
+    Menu:
+     DisplayName: " &6• &7Default display &8(&e%ID%&8)"
+     Lore:
+       - ""
+       - " &6&lINFO:"
+       - " &6• &7&oEvent created by &6%creator%"
+       - " &6• &7&oEvent has been created at §6%createdate%"
+       - ""
+       - " &6&lSTATS:"
+       - " &6• &7&oStarted &6%timesplayed%"
+       - ""
+     Item: DIAMOND
+    #Spawnlocation is location where players will spawn after joining event.
+    Spawnlocation:
+      world: world
+      x: 20.602812850949046
+      y: 78.0
+      z: -30.454512160487372
+      pitch: 14.48677
+      yaw: 86.22893
+    #EndPosition button coords.
+    EndPosition:
+      world: world
+      x: 17
+      y: 78
+      z: -31
+    Rewards:
+      First:
+        - "give %player% minecraft:diamond 10"
+      Second:
+        - "give %player% minecraft:diamond 5"
+      Third:
+        - "give %player% minecraft:diamond 3"
+      Join:
+        - "give %player% minecraft:diamond 1"

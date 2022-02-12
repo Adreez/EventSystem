@@ -1,0 +1,105 @@
+#----------------------------------------------#
+#                                              #
+#          EventSystem | By: Adr3ez_           #
+#       Contact: (Discord) Adr3ez_#8374        #
+#     Contact: (E-mail) d1ggysvk@gmail.com     #
+#                                              #
+#                                              #
+#         If you found bugs/glitches.          #
+#     Feel free to contact plugin creator!     #
+#                                              #
+#----------------------------------------------#
+
+
+# MySQL's connection is needed for counting system that plugin has!
+# If plugin isn't connected to database you won't be able to start event!
+#
+# Warning! Database must be created mannually!
+MySQL:
+  host: "127.0.0.1"
+  port: "3306"
+  database: "eventsystem"
+  username: "root"
+  password: ""
+  useSSL: false
+  table: "data"
+
+# Used in events.yml
+DateFormat: "dd/MM/yyyy HH:mm:ss"
+
+
+# Kicklocation is location where players will spawn after you stop event.
+KickLocation:
+  world: world
+  x: -174.4644312199024
+  y: 65.0
+  z: 241.48652754235343
+  yaw: 179.74355
+  pitch: 4.2078114
+
+
+ActionBar:
+  NotJoined: "&7New event has been activated! Use &6&l/event join &7and win some awesome rewards!"
+  Joined: "&7Players: &6&l%players_playing% 1. %first% 2. %second% 3. %third%"
+  Finished: "&6&lCongratulations! &7You finished &6%place%!"
+
+
+#If you want multi-line message just use \n for another line or in some cases I added listing method.
+Messages:
+  #Everything under usage means just descritptions after using command /event
+  usage:
+    broadcast: "&7Broadcast players messages about incomming events or somethink like that."
+    info: "&7Check everything about running event."
+    join: "&7Join event"
+    leave: "&7Leave event"
+    reload: "&7Reconnect to mysql, reload files."
+    start: "&7Start event."
+    stop: "&7Stop event and give players they rewards."
+  info:
+    message:
+      - "&6&lEvent info:"
+      - "&r"
+      - "&7Current event &8(&e%event_displayname%&8)"
+      - "&7Lore &8(&e%event_lore%&8)"
+      - "&r"
+      - "§7Your position &8(&e%PlayerPosition%&8)"
+      - "§7First player &8(&e%first%&8)"
+      - "§7Second player &8(&e%second%&8)"
+      - "§7Third player &8(&e%third%&8)"
+    anyeventstarted: "§c§lSorry! §7But there isn't any event started already!"
+
+  broadcast:
+    prefix: "&8[&e&lEventSystem&8] &r" #Leave nothing if you didn't want to use broadcast prefix
+    eventfinished: "\n\n&c&lInformation! &fEvent has been finished! \n&e&lCongratulations! &7To all winning positions! \n  &e&l1st &8(&e%first%&8) \n  &e&l2nd &8(&e%second%&8) \n  &e&l3rd &8(&e%third%&8)\n\n"
+    eventstarting-countdown: "§6§lEvent is starting! §7New event is starting in §6%cooldown%§7 seconds"
+    eventstartsnow: "&7Event starts &6&lNOW!"
+    playernull: "nobody :/"
+
+  join:
+    successfull: "&7You are &asuccessfully&7 joined event!"
+    alreadyjoined: "§7You already joined event!"
+    anyeventstarted: "&c&lSorry! &7There isn't any event started! Please try again later."
+    failedtojoin: "&c&lSorry! &7But there is some error please contact our support team in case you have any questions!" #This message will appear only if event is started but SQL isn't connected
+
+  leave:
+    leaved: "§7You leaved the event!"
+    notjoined: "&c&lSorry! &7But you are not joined to any event!"
+
+  sqlnotconnected: "&c&lSorry! &7But SQL isn't connected!"
+  reload: "Config.yml, events.yml & connection to database has been reloaded"
+  noperms: "&c&lSorry! &7But you are not allowed to do this!"
+  kicklocationset: "§7Kick location has been successfully set to your location!"
+  eventnotexist: "&c&lSorry! &7But event &8(&e%event%&8) doesn't exist!"
+  eventstarted: "&7Event &8(&e%event%&8)&7 has been started. Inform your players with &e&l/event broadcast <message>"
+
+  player-finished: "&eCongratulations! §7You finished the event! §8(§eYour position is %position%&8)"
+  playernotfinished: "&eYou didn't finished event."
+
+  eventeditor:
+    eventcreated: "&7New event &8(&e%event%&8)&7 has been created!&8(&e&lX:&e%x% &e&lY:&e%y% &e&lZ:&e%z%&8)"
+    delete: "&7Event &8(&e%event%&8) has been deleted!"
+    set:
+      endloc: "&7Ending location for event &8(&e%event%&8) &7has been set! &8(&e&lX:&e%x% &e&lY:&e%y% &e&lZ:&e%z%&8)"
+      spawnloc: "&7Spawning location for event &8(&e%event%&8) &7has been set! &8(&e&lX:&e%x% &e&lY:&e%y% &e&lZ:&e%z%&8)"
+      displayname: "§7Displayname for event &8(&e%event%&8) &7has been set! &8(%newvalue%&8)"
+      lore: "§7Displayname for event &8(&e%event%&8) &7has been set! &8(%newvalue%&8)"
