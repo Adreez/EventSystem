@@ -53,7 +53,6 @@ public class EventManager {
     public HashMap<Player, Integer> getFinishedPlayers() {
         return FinishedPlayers;
     }
-
     Player first = null;
     Player second = null;
     Player third = null;
@@ -80,7 +79,6 @@ public class EventManager {
 
     public void addPlayer(Player p) {
         JoinedPlayers.add(p);
-
         Main.data.createPlayer(p);
     }
     public void removePlayer(Player p) {
@@ -192,26 +190,26 @@ public class EventManager {
     public void stopEvent(){
         if (getCurrentEvent() != null) {
 
-            String test1 = Main.config.get().getString("Messages.broadcast.playernull");
-            String test2 = Main.config.get().getString("Messages.broadcast.playernull");
-            String test3 = Main.config.get().getString("Messages.broadcast.playernull");
+            String m1 = Main.config.get().getString("Messages.broadcast.playernull");
+            String m2 = Main.config.get().getString("Messages.broadcast.playernull");
+            String m3 = Main.config.get().getString("Messages.broadcast.playernull");
 
             if (first != null) {
-                test1 = first.getName();
+                m1 = first.getName();
             }
             if (second != null) {
-                test2 = second.getName();
+                m2 = second.getName();
             }
             if (third != null) {
-                test3 = third.getName();
+                m3 = third.getName();
             }
 
 
 
             Bukkit.broadcastMessage(Main.config.get().getString("Messages.broadcast.eventfinished").replace("&", "§")
-                    .replaceAll("%first%", test1)
-                    .replaceAll("%second%", test2)
-                    .replaceAll("%third%", test3));
+                    .replaceAll("%first%", m1)
+                    .replaceAll("%second%", m2)
+                    .replaceAll("%third%", m3));
 
             sendRewards();
             tt = 0;
@@ -231,12 +229,10 @@ public class EventManager {
     String f = Main.config.get().getString("Messages.broadcast.playernull");
     String s = Main.config.get().getString("Messages.broadcast.playernull");
     String t = Main.config.get().getString("Messages.broadcast.playernull");
-    public void startEvent(String event) {
+    public void startEvent(String event, int start_cooldown) {
         canJoin = true;
         currentevent = event;
         cooldown = 10;
-
-        int time = eventsyml.get().getInt("Events." + event + ".CountdownStartSeconds");
 
 
         scheduler.runTaskTimer(plugin, () -> {
@@ -267,7 +263,7 @@ public class EventManager {
         }, 0L, 10L);
 
         Bukkit.getServer().broadcastMessage(config.get().getString("Messages.broadcast.eventstarting-countdown")
-                .replaceAll("%cooldown%", String.valueOf(time))
+                .replaceAll("%cooldown%", String.valueOf(start_cooldown))
                 .replace("&", "§"));
         schedulerTimer.runTaskTimer(plugin, () -> {
 
@@ -286,7 +282,7 @@ public class EventManager {
                 }
                 schedulerTimer.cancelTasks(plugin);
             }
-        }, (time * 20L), 20L);
+        }, (start_cooldown * 20L), 20L);
 
 
         /*if (eventsyml.get().getConfigurationSection("Events." + event + ".Checkpoints") != null) {

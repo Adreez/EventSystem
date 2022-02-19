@@ -6,7 +6,7 @@
 
     <groupId>sk.adr3ez</groupId>
     <artifactId>EventSystem</artifactId>
-    <version>DEV-0.0.1</version>
+    <version>DEV-0.0.2</version>
     <packaging>jar</packaging>
 
     <name>EventSystem</name>
@@ -70,6 +70,12 @@
     </repositories>
 
     <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.22</version>
+            <scope>provided</scope>
+        </dependency>
         <dependency>
             <groupId>me.clip</groupId>
             <artifactId>placeholderapi</artifactId>

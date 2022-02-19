@@ -16,8 +16,6 @@
 Events:
   #Event name or event ID:
   test:
-    #How many minutes after start
-    CountdownStartSeconds: 30
     # DisplayName and lore are used in /event broadcast and also in later updates they will be used for GUI navigation.
     EventStats:
       creator: "Adr3ez_"
@@ -49,6 +47,9 @@ Events:
       x: 17
       y: 78
       z: -31
+    Checkpoints:
+      '1':
+
     Rewards:
       First:
         - "give %player% minecraft:diamond 10"

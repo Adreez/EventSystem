@@ -1,5 +1,4 @@
 sk\adr3ez\eventsystem\utils\MySQL.class
-sk\adr3ez\eventsystem\listeners\EventEditorTabCompleter.class
 sk\adr3ez\eventsystem\menu\menus\EditorEditDisplaySettings.class
 sk\adr3ez\eventsystem\commands\event\subcommands\reload.class
 sk\adr3ez\eventsystem\commands\eventeditor\subcommands\delete.class
@@ -10,7 +9,6 @@ sk\adr3ez\eventsystem\listeners\DeathListener.class
 sk\adr3ez\eventsystem\commands\eventeditor\subcommands\create.class
 sk\adr3ez\eventsystem\commands\eventeditor\EventEditorManager.class
 sk\adr3ez\eventsystem\commands\eventeditor\subcommands\test.class
-sk\adr3ez\eventsystem\listeners\EventTabCompleter.class
 sk\adr3ez\eventsystem\commands\event\SubCommand.class
 sk\adr3ez\eventsystem\Main.class
 sk\adr3ez\eventsystem\menu\menus\EditorEditSelector.class
@@ -21,6 +19,7 @@ sk\adr3ez\eventsystem\files\ConfigFile.class
 sk\adr3ez\eventsystem\commands\eventeditor\subcommands\setkickloc.class
 sk\adr3ez\eventsystem\menu\Menu.class
 sk\adr3ez\eventsystem\commands\event\EventCmdManager.class
+sk\adr3ez\eventsystem\utils\ChatManager.class
 sk\adr3ez\eventsystem\commands\event\subcommands\join.class
 sk\adr3ez\eventsystem\utils\PAPIManager.class
 sk\adr3ez\eventsystem\commands\event\subcommands\leave.class
@@ -33,6 +32,7 @@ sk\adr3ez\eventsystem\menu\menus\EditorEditRewards.class
 sk\adr3ez\eventsystem\menu\menus\EditorEventsList.class
 sk\adr3ez\eventsystem\menu\menus\EditorMainSelector.class
 sk\adr3ez\eventsystem\menu\menus\EditorEditRewardsSelector.class
+sk\adr3ez\eventsystem\utils\CheckpointsManager.class
 sk\adr3ez\eventsystem\utils\SQLGetter.class
 sk\adr3ez\eventsystem\commands\event\subcommands\stop.class
 sk\adr3ez\eventsystem\listeners\ChatListener.class

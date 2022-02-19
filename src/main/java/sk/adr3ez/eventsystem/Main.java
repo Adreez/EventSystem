@@ -26,6 +26,7 @@ public final class Main extends JavaPlugin {
     public static MySQL SQL;
     public static SQLGetter data;
     public static EventManager em;
+    public static ChatManager cm;
     private static final HashMap<Player, PlayerMenuUtility> playerMenuUtilityMap = new HashMap<>();
 
     @Override
@@ -38,14 +39,13 @@ public final class Main extends JavaPlugin {
         config = new ConfigFile(this);
         eventsyml = new EventsFile(this);
 
+        cm = new ChatManager();
         em = new EventManager(this);
         SQL = new MySQL();
         data = new SQLGetter();
 
         getCommand("event").setExecutor(new EventCmdManager());
         getCommand("eventeditor").setExecutor(new EventEditorManager());
-        /*this.getCommand("event").setTabCompleter(new EventTabCompleter());
-        this.getCommand("eventeditor").setTabCompleter(new EventEditorTabCompleter());*/
 
         getServer().getPluginManager().registerEvents(new ChatListener(), this);
         getServer().getPluginManager().registerEvents(new DeathListener(), this);

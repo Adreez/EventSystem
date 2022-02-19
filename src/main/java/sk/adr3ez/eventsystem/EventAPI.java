@@ -35,9 +35,8 @@ public class EventAPI {
             Main.eventsyml.get().set("Events." + event + ".EventStats.creator", creator);
             Main.eventsyml.get().set("Events." + event + ".EventStats.createdate", format.format(date));
             Main.eventsyml.get().set("Events." + event + ".EventStats.timesplayed", 0);
-            Main.eventsyml.get().set("Events." + event + ".CountdownStartSeconds", 300);
 
-            Main.eventsyml.get().set("Events." + event + ".Menu.DisplayName", " &6• &7Default display &8(&e%ID%&8)");
+            Main.eventsyml.get().set("Events." + event + ".Menu.DisplayName", " &6• &e%ID%");
             Main.eventsyml.get().set("Events." + event + ".Menu.Lore", lorelist);
             Main.eventsyml.get().set("Events." + event + ".Menu.Item", "DARK_OAK_BUTTON");
 

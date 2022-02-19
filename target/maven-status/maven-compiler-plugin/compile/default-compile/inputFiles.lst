@@ -1,3 +1,4 @@
+C:\Users\adria\IdeaProjects\EventSystem\src\main\java\sk\adr3ez\eventsystem\utils\ChatManager.java
 C:\Users\adria\IdeaProjects\EventSystem\src\main\java\sk\adr3ez\eventsystem\commands\event\subcommands\reload.java
 C:\Users\adria\IdeaProjects\EventSystem\src\main\java\sk\adr3ez\eventsystem\listeners\ChatListener.java
 C:\Users\adria\IdeaProjects\EventSystem\src\main\java\sk\adr3ez\eventsystem\commands\eventeditor\subcommands\test.java
@@ -23,13 +24,12 @@ C:\Users\adria\IdeaProjects\EventSystem\src\main\java\sk\adr3ez\eventsystem\Main
 C:\Users\adria\IdeaProjects\EventSystem\src\main\java\sk\adr3ez\eventsystem\utils\MySQL.java
 C:\Users\adria\IdeaProjects\EventSystem\src\main\java\sk\adr3ez\eventsystem\utils\PAPIManager.java
 C:\Users\adria\IdeaProjects\EventSystem\src\main\java\sk\adr3ez\eventsystem\utils\SQLGetter.java
-C:\Users\adria\IdeaProjects\EventSystem\src\main\java\sk\adr3ez\eventsystem\listeners\EventEditorTabCompleter.java
+C:\Users\adria\IdeaProjects\EventSystem\src\main\java\sk\adr3ez\eventsystem\utils\CheckpointsManager.java
 C:\Users\adria\IdeaProjects\EventSystem\src\main\java\sk\adr3ez\eventsystem\menu\Menu.java
 C:\Users\adria\IdeaProjects\EventSystem\src\main\java\sk\adr3ez\eventsystem\commands\eventeditor\subcommands\setkickloc.java
 C:\Users\adria\IdeaProjects\EventSystem\src\main\java\sk\adr3ez\eventsystem\menu\menus\EditorEditRewards.java
 C:\Users\adria\IdeaProjects\EventSystem\src\main\java\sk\adr3ez\eventsystem\commands\event\EventCmdManager.java
 C:\Users\adria\IdeaProjects\EventSystem\src\main\java\sk\adr3ez\eventsystem\menu\menus\EditorEditRewardsSelector.java
-C:\Users\adria\IdeaProjects\EventSystem\src\main\java\sk\adr3ez\eventsystem\listeners\EventTabCompleter.java
 C:\Users\adria\IdeaProjects\EventSystem\src\main\java\sk\adr3ez\eventsystem\listeners\InteractListener.java
 C:\Users\adria\IdeaProjects\EventSystem\src\main\java\sk\adr3ez\eventsystem\files\ConfigFile.java
 C:\Users\adria\IdeaProjects\EventSystem\src\main\java\sk\adr3ez\eventsystem\menu\menus\EditorMainSelector.java

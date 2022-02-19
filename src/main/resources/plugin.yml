@@ -10,6 +10,7 @@ commands:
     description: Main command for everything
     aliases:
       - es
+      - e
   eventeditor:
     description: Edit everything you need
     aliases:

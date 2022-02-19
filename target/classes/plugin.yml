@@ -1,5 +1,5 @@
 name: EventSystem
-version: 'DEV-0.0.1'
+version: 'DEV-0.0.2'
 main: sk.adr3ez.eventsystem.Main
 api-version: 1.17
 softdepend: [ PlaceholderAPI ]
@@ -10,6 +10,7 @@ commands:
     description: Main command for everything
     aliases:
       - es
+      - e
   eventeditor:
     description: Edit everything you need
     aliases:
