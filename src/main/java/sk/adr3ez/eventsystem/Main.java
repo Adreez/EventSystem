@@ -5,13 +5,10 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import sk.adr3ez.eventsystem.commands.event.EventCmdManager;
 import sk.adr3ez.eventsystem.commands.eventeditor.EventEditorManager;
-import sk.adr3ez.eventsystem.listeners.ChatListener;
-import sk.adr3ez.eventsystem.listeners.DeathListener;
-import sk.adr3ez.eventsystem.listeners.MenuListener;
+import sk.adr3ez.eventsystem.listeners.*;
 import sk.adr3ez.eventsystem.menu.PlayerMenuUtility;
 import sk.adr3ez.eventsystem.utils.*;
 import sk.adr3ez.eventsystem.files.EventsFile;
-import sk.adr3ez.eventsystem.listeners.InteractListener;
 import sk.adr3ez.eventsystem.files.ConfigFile;
 
 import java.io.File;
@@ -27,6 +24,7 @@ public final class Main extends JavaPlugin {
     public static SQLGetter data;
     public static EventManager em;
     public static ChatManager cm;
+    public static CheckpointsManager cpm;
     private static final HashMap<Player, PlayerMenuUtility> playerMenuUtilityMap = new HashMap<>();
 
     @Override
@@ -43,10 +41,12 @@ public final class Main extends JavaPlugin {
         em = new EventManager(this);
         SQL = new MySQL();
         data = new SQLGetter();
+        cpm = new CheckpointsManager();
 
         getCommand("event").setExecutor(new EventCmdManager());
         getCommand("eventeditor").setExecutor(new EventEditorManager());
 
+        getServer().getPluginManager().registerEvents(new BlockProtectListener(), this);
         getServer().getPluginManager().registerEvents(new ChatListener(), this);
         getServer().getPluginManager().registerEvents(new DeathListener(), this);
         getServer().getPluginManager().registerEvents(new InteractListener(), this);

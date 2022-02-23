@@ -24,6 +24,7 @@ sk\adr3ez\eventsystem\commands\event\subcommands\join.class
 sk\adr3ez\eventsystem\utils\PAPIManager.class
 sk\adr3ez\eventsystem\commands\event\subcommands\leave.class
 sk\adr3ez\eventsystem\commands\eventeditor\SubCommand.class
+sk\adr3ez\eventsystem\commands\eventeditor\subcommands\checkpoint.class
 sk\adr3ez\eventsystem\files\EventsFile.class
 sk\adr3ez\eventsystem\commands\event\subcommands\broadcast.class
 sk\adr3ez\eventsystem\commands\eventeditor\subcommands\set.class
@@ -37,3 +38,4 @@ sk\adr3ez\eventsystem\utils\SQLGetter.class
 sk\adr3ez\eventsystem\commands\event\subcommands\stop.class
 sk\adr3ez\eventsystem\listeners\ChatListener.class
 sk\adr3ez\eventsystem\listeners\MenuListener.class
+sk\adr3ez\eventsystem\listeners\BlockProtectListener.class

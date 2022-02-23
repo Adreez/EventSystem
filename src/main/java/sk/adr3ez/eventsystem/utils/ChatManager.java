@@ -9,7 +9,7 @@ public class ChatManager {
         return ChatColor.translateAlternateColorCodes('&', s);
     }
 
-    public String noPerms = Main.config.get().getString("Messages.noperms");
-    public String cmdNotExist = "&cSorry but this command doesn't exist!";
+    public String noPerms = format(Main.config.get().getString("Messages.noperms"));
+    public String cmdNotExist = format("&cSorry but this command doesn't exist!");
 
 }

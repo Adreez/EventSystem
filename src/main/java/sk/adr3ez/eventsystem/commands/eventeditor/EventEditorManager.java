@@ -20,6 +20,7 @@ public class EventEditorManager implements CommandExecutor {
         subcommands.add(new set());
         subcommands.add(new setkickloc());
         subcommands.add(new test());
+        subcommands.add(new checkpoint());
     }
 
     @Override

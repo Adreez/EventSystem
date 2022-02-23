@@ -19,7 +19,7 @@ public class set extends SubCommand {
 
     @Override
     public String getSyntax() {
-        return "/ee set <event> spawnloc/displayname/lore/endloc/checkpoint";
+        return "/ee set <event> spawnloc/displayname/lore/endloc";
     }
 
     @Override
@@ -57,6 +57,7 @@ public class set extends SubCommand {
                 }
                 else if(args[2].contains("endloc")) {
                     Main.em.setEndingLocation(args[1], p);
+                    Main.em.reloadEventManager();
                     p.sendMessage(Main.config.get().getString("Messages.eventeditor.set.endloc").replace("&", "§")
                             .replaceAll("%event%", args[1])
                             .replaceAll("%x%", String.valueOf(p.getLocation().getBlockX()))
@@ -99,17 +100,6 @@ public class set extends SubCommand {
                         p.sendMessage(Main.config.get().getString("Messages.eventeditor.set.lore").replace("&", "§")
                                 .replaceAll("%event%", args[1])
                                 .replaceAll("%newvalue%", sm));
-                    }
-
-
-                    else if (args[2].contains("checkpoint")) {
-                        if (args[3] != null) {
-                            p.sendMessage("Me! :) ");
-
-                            Main.em.setCheckpoint(args[1], p, Integer.parseInt(args[3]));
-                        } else {
-                            p.sendMessage("You must enter second argument!");
-                        }
                     }
 
                 } else {

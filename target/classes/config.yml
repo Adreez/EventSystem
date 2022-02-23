@@ -39,8 +39,8 @@ KickLocation:
 
 
 ActionBar:
-  NotJoined: "&7New event has been activated! Use &6&l/event join &7and win some awesome rewards!"
-  Joined: "&7Players: &6&l%players_playing% 1. %first% 2. %second% 3. %third%"
+  NotJoined: "&7Use &6&l/event join &7and win some awesome rewards!"
+  Joined: "&7Playing &6%players_playing% &8| &71. &6%first% &8| &72. &6%second% &8| &73. &6%third%"
   Finished: "&6&lCongratulations! &7You finished &6%place%!"
 
 

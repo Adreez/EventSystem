@@ -31,7 +31,12 @@ public class EventManager {
 
     public boolean canJoin = false;
     public HashMap<Player, Integer> playerCheckpoints = new HashMap<>();
-    public ArrayList<Location> checkpointLocations = new ArrayList<>();
+
+    public ArrayList<Location> getProtectedBlocks() {
+        return ProtectedBlocks;
+    }
+
+    private final ArrayList<Location> ProtectedBlocks = new ArrayList<>();
 
     int tt = 0;
     public ArrayList<Player> DisplayNameListener = new ArrayList<>();
@@ -74,6 +79,8 @@ public class EventManager {
 
         eventlist = new ArrayList<>(eventsyml.get().getConfigurationSection("Events").getKeys(false));
         kickloc = new Location(kickw, kickx, kicky, kickz, kickyaw, kickpitch);
+        getProtectedBlocks().clear();
+        LoadProtectedBlocks();
     }
 
 
@@ -144,19 +151,6 @@ public class EventManager {
         p.getLocation().getBlock().setType(Material.LIGHT_WEIGHTED_PRESSURE_PLATE);
     }
 
-    public void setCheckpoint(String event, Player p, int checkpoint) {
-        Main.eventsyml.get().set("Events." + event + ".Checkpoints." + checkpoint + ".world", p.getLocation().getWorld().getName());
-        Main.eventsyml.get().set("Events." + event + ".Checkpoints." + checkpoint + ".x", p.getLocation().getBlockX());
-        Main.eventsyml.get().set("Events." + event + ".Checkpoints." + checkpoint + ".y", p.getLocation().getBlockY());
-        Main.eventsyml.get().set("Events." + event + ".Checkpoints." + checkpoint + ".z", p.getLocation().getBlockZ());
-        Main.eventsyml.get().set("Events." + event + ".Checkpoints." + checkpoint + ".pitch", p.getLocation().getPitch());
-        Main.eventsyml.get().set("Events." + event + ".Checkpoints." + checkpoint + ".yaw", p.getLocation().getYaw());
-        Main.eventsyml.reload();
-
-        p.getLocation().getBlock().setType(Material.HEAVY_WEIGHTED_PRESSURE_PLATE);
-        reloadEventManager();
-    }
-
     public void sendRewards(){
         if (currentevent != null) {
             if (first != null) {
@@ -221,7 +215,7 @@ public class EventManager {
             FinishedPlayers.clear();
             scheduler.cancelTasks(plugin);
             playerCheckpoints.clear();
-            checkpointLocations.clear();
+            ProtectedBlocks.clear();
         }
     }
 
@@ -288,5 +282,27 @@ public class EventManager {
         /*if (eventsyml.get().getConfigurationSection("Events." + event + ".Checkpoints") != null) {
             Bukkit.broadcastMessage(String.valueOf(eventsyml.get().getConfigurationSection("Events." + event + ".Checkpoints").getKeys(false)));
         }*/
+    }
+
+    public void LoadProtectedBlocks() {
+        if (eventlist != null) {
+            for (String s : eventlist) {
+
+                getProtectedBlocks().add(new Location(Bukkit.getWorld(eventsyml.get().getString("Events." + s + ".EndPosition.world")),
+                        eventsyml.get().getDouble("Events." + s + ".EndPosition.x"),
+                        eventsyml.get().getDouble("Events." + s + ".EndPosition.y"),
+                        eventsyml.get().getDouble("Events." + s + ".EndPosition.z")));
+
+                if (eventsyml.get().getConfigurationSection("Events." + s + ".Checkpoints").getKeys(false) != null) {
+                    for (String c : eventsyml.get().getConfigurationSection("Events." + s + ".Checkpoints").getKeys(false)) {
+
+                        getProtectedBlocks().add(new Location(Bukkit.getWorld(eventsyml.get().getString("Events." + s + ".Checkpoints." + c + ".world")),
+                                eventsyml.get().getDouble("Events." + s + ".Checkpoints." + c + ".x"),
+                                eventsyml.get().getDouble("Events." + s + ".Checkpoints." + c + ".y"),
+                                eventsyml.get().getDouble("Events." + s + ".Checkpoints." + c + ".z")));
+                    }
+                }
+            }
+        }
     }
 }
