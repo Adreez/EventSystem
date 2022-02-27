@@ -48,7 +48,7 @@ public class start extends SubCommand {
                         p.sendMessage(Main.config.get().getString("Messages.eventnotexist").replace("&", "§"));
                     }
                 }
-                else if (args.length == 1 || args.length >= 4) {
+                else if (args.length != 3) {
                     p.sendMessage("Usage:" + getSyntax());
                 }
             } else {

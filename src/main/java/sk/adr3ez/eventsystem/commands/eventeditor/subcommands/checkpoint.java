@@ -39,8 +39,7 @@ public class checkpoint extends SubCommand {
 
                             Main.cpm.setCP(p.getLocation(), args[2], Integer.valueOf(args[3]));
                             Main.em.reloadEventManager();
-                            p.sendMessage("Checkpoint has been set!");
-                            p.sendMessage(String.valueOf(Main.em.getProtectedBlocks()));
+                            p.sendMessage("Checkpoint has been set on your position!");
 
                         } else {
                             p.sendMessage("checkpointID must be number!");
@@ -49,8 +48,8 @@ public class checkpoint extends SubCommand {
                         p.sendMessage("Event not exist!");
                     }
                 } else if(args[1].equalsIgnoreCase("remove")) {
-                    p.sendMessage(String.valueOf(Main.em.eventlist));
-                    p.sendMessage("remove");
+
+                    p.sendMessage("Checkpoint has been removed.");
                 } else {
                     p.sendMessage("Usage: /ee checkpoint set/remove <gameID> <checkpointID>");
                 }

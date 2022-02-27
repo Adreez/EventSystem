@@ -61,9 +61,9 @@ public final class Main extends JavaPlugin {
     @Override
     public void onDisable() {
         // Plugin shutdown logic
+        em.stopEvent();
         if (SQL.isConnected())
             SQL.disconnect();
-        em.stopEvent();
     }
 
     private void sendStartupMessage(){

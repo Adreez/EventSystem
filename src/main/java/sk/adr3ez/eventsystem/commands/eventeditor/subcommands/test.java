@@ -27,6 +27,8 @@ public class test extends SubCommand {
         Main.eventsyml.get().set("Messages.usage.info", "idk");
         Main.eventsyml.reload();
 
+        p.sendMessage(String.valueOf(Main.eventsyml.get().getConfigurationSection("Events.test.Checkpoints").getKeys(false)));
+
         new EditorMainSelector(Main.getPlayerMenuUtility(p)).open();
 
     }

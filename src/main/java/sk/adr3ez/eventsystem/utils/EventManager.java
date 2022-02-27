@@ -5,14 +5,14 @@ import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitScheduler;
+import org.bukkit.scheduler.BukkitTask;
 import sk.adr3ez.eventsystem.Main;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import static sk.adr3ez.eventsystem.Main.config;
-import static sk.adr3ez.eventsystem.Main.eventsyml;
+import static sk.adr3ez.eventsystem.Main.*;
 
 
 public class EventManager {
@@ -29,14 +29,16 @@ public class EventManager {
         schedulerTimer = plugin.getServer().getScheduler();
     }
 
+    private int TimePlaying = 0;
+    public HashMap<Player, Integer> TimeFinished = new HashMap<>();
+
     public boolean canJoin = false;
     public HashMap<Player, Integer> playerCheckpoints = new HashMap<>();
 
+    private final ArrayList<Location> ProtectedBlocks = new ArrayList<>();
     public ArrayList<Location> getProtectedBlocks() {
         return ProtectedBlocks;
     }
-
-    private final ArrayList<Location> ProtectedBlocks = new ArrayList<>();
 
     int tt = 0;
     public ArrayList<Player> DisplayNameListener = new ArrayList<>();
@@ -106,6 +108,11 @@ public class EventManager {
             }
             FinishedPlayers.put(p, tt);
             p.teleport(getKickLocation());
+            Bukkit.broadcastMessage(Main.cm.format(config.get().getString("Messages.broadcast.playerfinished")
+                    .replaceAll("%player%", p.getName())
+                    .replaceAll("%time%", String.valueOf(TimePlaying))
+                    .replaceAll("%position%", String.valueOf(FinishedPlayers.get(p)))));
+            TimeFinished.put(p, TimePlaying);
         }
     }
 
@@ -216,6 +223,9 @@ public class EventManager {
             scheduler.cancelTasks(plugin);
             playerCheckpoints.clear();
             ProtectedBlocks.clear();
+            TimePlaying = 0;
+            TimeFinished.clear();
+            cpm.unloadGameCP();
         }
     }
 
@@ -238,29 +248,30 @@ public class EventManager {
                         s = first.getName();
                     if (third != null)
                         t = first.getName();
-                    p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(config.get().getString("ActionBar.Joined")
-                            .replace("&", "§")
+                    p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(Main.cm.format(config.get().getString("ActionBar.Joined")
                             .replaceAll("%players_playing%", String.valueOf(JoinedPlayers.size()))
                             .replaceAll("%first%", f)
                             .replaceAll("%second%", s)
-                            .replaceAll("%third%", t)));
+                            .replaceAll("%third%", t)
+                            .replaceAll("%checkpoint%", String.valueOf(playerCheckpoints.get(p)))
+                            .replaceAll("%time%", String.valueOf(TimePlaying)))));
                 }
                 else if (FinishedPlayers.containsKey(p)) {
-                    p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(config.get().getString("ActionBar.Finished")
-                            .replace("&", "§")
-                            .replaceAll("%place%", String.valueOf(FinishedPlayers.get(p)))));
+                    p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(Main.cm.format(config.get().getString("ActionBar.Finished")
+                            .replaceAll("%place%", String.valueOf(FinishedPlayers.get(p)))
+                            .replaceAll("%time%", String.valueOf(TimePlaying)))));
                 } else {
-                    p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(config.get().getString("ActionBar.NotJoined")
-                            .replace("&", "§")));
+                    p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(Main.cm.format(config.get().getString("ActionBar.NotJoined")
+                            .replaceAll("%time%", String.valueOf(TimePlaying)))));
                 }
             }
-        }, 0L, 10L);
+            TimePlaying++;
+        }, 0L, 20L);
 
-        Bukkit.getServer().broadcastMessage(config.get().getString("Messages.broadcast.eventstarting-countdown")
-                .replaceAll("%cooldown%", String.valueOf(start_cooldown))
-                .replace("&", "§"));
-        schedulerTimer.runTaskTimer(plugin, () -> {
+        Bukkit.getServer().broadcastMessage(config.get().getString(Main.cm.format("Messages.broadcast.eventstarting-countdown"))
+                .replaceAll("%cooldown%", String.valueOf(start_cooldown)));
 
+        BukkitTask id = Bukkit.getServer().getScheduler().runTaskTimer(plugin, () -> {
             if (cooldown > 0) {
                 Bukkit.getServer().broadcastMessage("Events starts in " + cooldown);
                 for (Player p : JoinedPlayers) {
@@ -277,11 +288,9 @@ public class EventManager {
                 schedulerTimer.cancelTasks(plugin);
             }
         }, (start_cooldown * 20L), 20L);
+        Bukkit.getServer().getScheduler().cancelTask(id.getTaskId());
 
-
-        /*if (eventsyml.get().getConfigurationSection("Events." + event + ".Checkpoints") != null) {
-            Bukkit.broadcastMessage(String.valueOf(eventsyml.get().getConfigurationSection("Events." + event + ".Checkpoints").getKeys(false)));
-        }*/
+        cpm.loadGameCP(event);
     }
 
     public void LoadProtectedBlocks() {

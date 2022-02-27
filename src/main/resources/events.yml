@@ -49,7 +49,19 @@ Events:
       z: -31
     Checkpoints:
       '1':
-
+        world: world
+        x: 17
+        y: 78
+        z: -28
+        pitch: 89.826004
+        yaw: 38.556477
+      '2':
+        world: world
+        x: 17
+        y: 78
+        z: -25
+        pitch: 90.0
+        yaw: -4.4198527
     Rewards:
       First:
         - "give %player% minecraft:diamond 10"

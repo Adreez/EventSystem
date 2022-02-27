@@ -5,7 +5,6 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import sk.adr3ez.eventsystem.Main;
 
 import java.io.File;
-import java.io.IOException;
 
 public class EventsFile {
 
@@ -27,14 +26,11 @@ public class EventsFile {
         if (!file.exists()) {
             this.plugin.saveResource(fileName, false);
         }
-
-
-        saveFiles();
+        //saveFiles();
         customFile = YamlConfiguration.loadConfiguration(file);
-
     }
 
-    public void saveFiles() {
+    /*public void saveFiles() {
         if (customFile == null) {
             return;
         }
@@ -43,13 +39,11 @@ public class EventsFile {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
+    }*/
 
     public FileConfiguration get() {
         if (customFile == null)
             reload();
-
         return customFile;
     }
 }
